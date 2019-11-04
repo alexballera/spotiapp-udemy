@@ -10,13 +10,20 @@ export class HomeComponent implements OnInit {
 
   nuevasCanciones: any[] = [];
 
+  errorMessage: string;
+
   constructor( private spotify: SpotifyService ) {
     this.spotify.getNewReleases()
-    .subscribe((data: any) => {
+    .subscribe(
+      (data: any) => {
       console.log(data.albums.items);
 
       this.nuevasCanciones = data.albums.items;
-    });
+    },
+    (error: any) => {
+      this.errorMessage = error.error.error.message;
+    }
+    );
   }
 
   ngOnInit() {
