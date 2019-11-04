@@ -10,10 +10,15 @@ export class SearchComponent {
 
   artistas: any[] = [];
 
+  errorMessage: string;
+
   constructor(private spotify: SpotifyService) { }
 
   buscar = (termino: string) => {
     this.spotify.getArtista(termino)
-    .subscribe((data: any) => this.artistas = data);
+    .subscribe(
+      (data: any) => this.artistas = data,
+      (error: any) => this.errorMessage = error.error.error.message
+    );
   }
 }
