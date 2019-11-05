@@ -8,13 +8,13 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
 
   constructor(private http: HttpClient) {
-    console.log('Spotify Dervice Done');
+    console.log('Spotify Service Done');
   }
 
   getQuery = (query: string) => {
     const url = `https://api.spotify.com/v1/${query}`;
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQCPopMYHJapbPO4cgiZ-DhO7WQ_gETbUxJ8xwv1gT16O8vNAsB7-RJa50wy9DLKuwwvTrVsx7OhL8YSJNI'
+      Authorization: 'Bearer BQCwGD5HgRkgzPjOW1BwSXr8R1gxcrVSYAdqyT6d_GSGb25s4szN8orrB5CXKAM4XbZiCD021pdU4s6Yees'
     });
     return this.http.get(url, {headers});
   }
