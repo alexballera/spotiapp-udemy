@@ -20,8 +20,9 @@ export class SearchComponent {
     this.spotify.getArtista(termino)
     .subscribe(
       (data: any) => {
-        this.artistas = data,
+        this.artistas = data;
         this.loading = false;
+        console.log(data);
       },
       (error: any) => this.errorMessage = error.error.error.message
     );

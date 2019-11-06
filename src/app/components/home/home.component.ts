@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
       (data: any) => {
         this.nuevasCanciones = data;
         this.loading = false;
+        console.log(data);
       },
       (error: any) => this.errorMessage = error.error.error.message
     );
