@@ -14,9 +14,13 @@ export class HomeComponent implements OnInit {
 
   errorMessage: string;
 
+  error: boolean;
+
   constructor( private spotify: SpotifyService ) {
 
     this.loading = true;
+
+    this.error = false;
 
     this.spotify.getNewReleases()
     .subscribe(
@@ -25,7 +29,11 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         console.log(data);
       },
-      (error: any) => this.errorMessage = error.error.error.message
+      (err: any) => {
+        this.loading = false;
+        this.error = true;
+        this.errorMessage = err.error.error.message;
+      }
     );
   }
 
